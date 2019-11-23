@@ -1,0 +1,2 @@
+# CoreAPI
+WaniKanji Core API
