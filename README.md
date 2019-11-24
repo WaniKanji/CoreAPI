@@ -1,2 +1,2 @@
-# CoreAPI
-WaniKanji Core API
+# Core-API
+WaniKanji Core-API
