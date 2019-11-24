@@ -8,4 +8,4 @@ services:
 before-script: pip install docker-compose
 
 script:
-  - docker-compose run app sh -c "python manage.py test -v 2"
+  - docker-compose run core-api sh -c "python manage.py test -v 2"
