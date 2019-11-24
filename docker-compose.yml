@@ -4,6 +4,8 @@ services:
   db:
     image: postgres
   core-api:
+    env_file:
+        - .env
     build:
       context: .
     ports:
