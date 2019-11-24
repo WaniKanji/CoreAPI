@@ -1,11 +1,15 @@
-language: "python"
+language: python
 python:
-  - "3.6"
-
+- '3.6'
 services:
-  - docker
-
+- docker
 before-script: pip install docker-compose
-
 script:
-  - docker-compose run core-api sh -c "python manage.py test -v 2"
+- docker-compose run core-api sh -c "python manage.py test -v 2"
+deploy:
+  provider: heroku
+  api_key:
+    secure: ggVo1jZs1Lgc9gKX4BSYzcyZNr5acmO1VZp5jHUjbe5Nx9z93knxKi+rIYGiWcGMZ7zYvClwnZoq7F6xex+cGd3a/4w4iIAF4mC4UwlFoQ7LHpB1RmaXk9dF88sRCD3Z53hsMM99s5fiphCsLngFViHBZHAlaatMWtOt+nsDq9iGShay38tz7MU3RSYENVJMB5tJ0vrz4S//nZQSgO1hymt2Ig347jbDzbOARH9sa+BWW1hzYdF03UrbrBwzv1G1AKp4bz6jyHOTWfFEHlC69MHiwEuZwTapboqClVDtQyoKlv7Ma8wqHcgqCk0vez6ISSZKRR36VvsFTLxfTkpPy6jhenaD6cSe3AIHkWXTysqw3Bzc0hZEjuUjMksis2HI2VdChIgQVTqZXssBHL5FiNa3yo6K4k2XSlh3e+mw3OZQ8dl+Bhf5qzzNjD3+5WkOdD41zwi7Rk9A/0e8tds+1dndUgRTStIGEhCqRHSVdhF6F4sGZA1cHcErtGtPYraabc+gGYhXd0McwN+Gbpx4FYf77s/hE42828mfllKuFL8UGZZs/B8FS3uf5XE7m9ukR1nFwgSCNYk5fDvJbzC4rNqykFi0b3aqGZKbFWosP4ciPCqscwrMpVt2GLiVDb0xBlWtELDO7uE1FOa4FnjffP8YS6IgGG2GEiCQpQU1yA8=
+  app: wanikanji-core-api
+  on:
+    repo: WaniKanji/core-api
