@@ -24,5 +24,8 @@ RUN mkdir /core-api
 WORKDIR /core-api
 COPY ./core-api /core-api
 
+# collect static files
+RUN python manage.py collectstatic --noinput
+
 RUN adduser -D user
 USER user

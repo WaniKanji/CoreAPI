@@ -21,10 +21,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY', 'FAKE_SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'FAKE_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('IS_DEVELOPMENT', True)
+DEBUG = os.environ.get('IS_DEVELOPMENT', True)
 
 ALLOWED_HOSTS = ['localhost', 'wanikanji-core-api.herokuapp.com']
 
@@ -122,6 +122,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
