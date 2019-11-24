@@ -10,6 +10,13 @@ RUN apk --no-cache --update-cache add gcc gfortran python python-dev py-pip buil
 RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
 RUN pip install numpy==1.17.4
 
+# install psycopg2
+RUN apk update \
+    && apk add --virtual build-deps gcc python3-dev musl-dev \
+    && apk add postgresql-dev \
+    && pip install psycopg2 \
+    && apk del build-deps
+
 COPY ./requirements.txt /requirements.txt
 RUN pip install -r requirements.txt
 
