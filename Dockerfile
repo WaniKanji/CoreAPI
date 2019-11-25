@@ -21,8 +21,10 @@ COPY ./requirements.txt /requirements.txt
 RUN pip install -r requirements.txt
 
 RUN mkdir /core-api
+
 # collect static files
 RUN python manage.py collectstatic --noinput
+
 WORKDIR /core-api
 COPY ./core-api /core-api
 
