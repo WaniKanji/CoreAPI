@@ -1,6 +1,6 @@
 from django.contrib import admin
-from apps.kanji.models import Kanji
-from apps.kanji.models import KanjiReadings
+from apps.lesson.models import Kanji
+from apps.lesson.models import KanjiReadings
 
 
 class KanjiReadingInlineAdmin(admin.TabularInline):

@@ -16,9 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
-from apps.kanji import urls as kanji_urls
+from apps.lesson import urls as lesson_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/kanji/', include(kanji_urls))
+    path('api/lesson/', include(lesson_urls))
 ]
