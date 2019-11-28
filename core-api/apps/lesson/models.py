@@ -2,6 +2,14 @@ from django.db import models
 from . import constants
 
 
+class Kana(models.Model):
+    writing = models.CharField(max_length=25, blank=False, unique=True)
+    kana_type = models.CharField(choices=constants.KANA_TYPE_CHOICES, max_length=10)
+
+    class Meta:
+        app_label = 'lesson'
+
+
 class Kanji(models.Model):
     writing = models.CharField(max_length=25, blank=False, unique=True)
     meaning = models.CharField(max_length=50, blank=False)
