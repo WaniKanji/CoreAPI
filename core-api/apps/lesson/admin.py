@@ -1,6 +1,13 @@
 from django.contrib import admin
-from apps.lesson.models import Kanji
-from apps.lesson.models import KanjiReadings
+from .models import Kana
+from .models import Kanji
+from .models import KanjiReadings
+
+
+class KanaAdmin(admin.ModelAdmin):
+    list_display = ('writing', 'kana_type',)
+    search_fields = ['writing',]
+    list_filter = ('kana_type',)
 
 
 class KanjiReadingInlineAdmin(admin.TabularInline):
@@ -14,3 +21,4 @@ class KanjiAdmin(admin.ModelAdmin):
     inlines = [KanjiReadingInlineAdmin,]
 
 admin.site.register(Kanji, KanjiAdmin)
+admin.site.register(Kana, KanaAdmin)
