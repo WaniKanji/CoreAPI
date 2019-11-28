@@ -1,7 +1,7 @@
 from django.test import TestCase
 from rest_framework.test import APIClient
-from apps.kanji.models import Kanji
-from apps.kanji.models import KanjiReadings
+from apps.lesson.models import Kanji
+from apps.lesson.models import KanjiReadings
 
 
 class KanjiOverviewTest(TestCase):

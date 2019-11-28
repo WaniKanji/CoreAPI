@@ -1,13 +1,13 @@
 import requests
 
 from django.core.management.base import BaseCommand, CommandError
-from apps.kanji import constants
-from apps.kanji.models import Kanji
-from apps.kanji.models import KanjiReadings
+from apps.lesson import constants
+from apps.lesson.models import Kanji
+from apps.lesson.models import KanjiReadings
 
 
 K_WANIKANI_API_ENDPOINT = 'https://www.wanikani.com/api/user/0366768dc874416f4257f4e0486de9a4'
-K_WANIKANI_MAX_LEVEL = 60
+K_WANIKANI_MAX_LEVEL = 1
 
 class Command(BaseCommand):
     help = 'Scrap kanji from wanikani APIs'
