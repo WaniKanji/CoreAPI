@@ -12,7 +12,7 @@ class KanjiDetailViewTest(TestCase):
 
     def test_get_kanji_detail_view(self):
         client = APIClient()
-        res = client.get('/api/kanji/一')
+        res = client.get('/api/lesson/kanji/一')
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.data['meaning'], 'one')
         self.assertEqual(res.data['writing'], '一')
