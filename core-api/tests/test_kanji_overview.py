@@ -12,6 +12,6 @@ class KanjiOverviewTest(TestCase):
 
     def test_get_kanji_overview(self):
         client = APIClient()
-        res = client.get('/api/kanji/')
+        res = client.get('/api/lesson/kanji/')
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.data['total_kanji'], 1)
