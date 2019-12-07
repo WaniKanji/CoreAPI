@@ -6,7 +6,7 @@ from apps.lesson.models import Kanji
 from apps.lesson.models import KanjiReadings
 
 
-K_WANIKANI_API_ENDPOINT = 'https://www.wanikani.com/api/user/0366768dc874416f4257f4e0486de9a4'
+K_WANIKANI_API_ENDPOINT = 'https://www.wanikani.com/api/user/fb45af3089485d735f117bc954f27bb2'
 
 class Command(BaseCommand):
     help = 'Scrap kanji from wanikani APIs'

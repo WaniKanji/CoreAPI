@@ -8,11 +8,10 @@ from .models import Vocabulary
 from .serializers import KanjiSerializer
 from .serializers import VocabularySerializer
 
-class KanjiOverviewView(views.APIView):
-    def get(self, request, format=None):
-        return response.Response({
-            'total_kanji': Kanji.objects.count()
-        }, status=200)
+class KanjiOverviewView(generics.ListAPIView):
+    queryset = Kanji.objects.all()
+    serializer_class = KanjiSerializer
+    lookup_field = 'writing'
 
 
 class KanjiDetailView(generics.RetrieveAPIView):
