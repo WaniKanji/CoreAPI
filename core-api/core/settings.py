@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'FAKE_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('IS_DEVELOPMENT', True)
 
-ALLOWED_HOSTS = ['localhost', 'wanikanji-core-api.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '*', 'wanikanji-core-api.herokuapp.com']
 
 
 # Application definition
