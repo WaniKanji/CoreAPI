@@ -8,3 +8,4 @@ def save_base64_to_file(data, folder, filename):
     
     with open('{}/{}.{}'.format(folder, filename, file_extension), 'wb') as f:
         f.write(base64.b64decode(image_data))
+    return '{}.{}'.format(filename, file_extension)

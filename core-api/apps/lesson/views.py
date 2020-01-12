@@ -1,3 +1,5 @@
+import os
+
 from datetime import datetime
 from django.shortcuts import render
 from rest_framework import views
@@ -9,6 +11,7 @@ from .models import Vocabulary
 from .serializers import KanjiSerializer
 from .serializers import VocabularySerializer
 from .image_file_utils import save_base64_to_file
+from clients.s3.s3_manager import S3ImageManager
 
 IMAGE_DIR = 'images-data'
 
@@ -43,6 +46,10 @@ class RecognizeImageView(views.APIView):
         # Not yet recognize the image
         result = '一'
         folder = '{}/{}'.format(IMAGE_DIR, result)
+        os.system('mkdir -p {}'.format(folder))
         filename = '{}-{}'.format('user', datetime.now().strftime("%Y%m%d-%H%M%S"))
-        save_base64_to_file(base64_data, folder, filename)
+        full_name = save_base64_to_file(base64_data, folder, filename)
+        s3_manager = S3ImageManager()
+        url = s3_manager.upload_image(folder, full_name)
+        print ('URL: ', url)
         return response.Response(result, status=200)
