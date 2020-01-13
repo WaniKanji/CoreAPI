@@ -1,12 +1,11 @@
 import boto3
 import os
+from django.conf import settings
 
 
 K_PUBLIC_READ = 'public-read'
 K_BUCKET_NAME = 'wanikanji'
 K_S3 = 's3'
-K_AWS_ACCESS_KEY_ID = 'AKIAJPLXRHOGTNGSPWOA'
-K_AWS_SECRET_ACCESS_KEY = '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'
 
 
 class S3ImageManager(object):
@@ -26,8 +25,8 @@ class S3API(object):
         self.s3 = self.connect()
 
     def connect(self):
-        return boto3.client(K_S3, aws_access_key_id=K_AWS_ACCESS_KEY_ID,
-                      aws_secret_access_key=K_AWS_SECRET_ACCESS_KEY)
+        return boto3.client(K_S3, aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+                      aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY)
 
     def upload_file(self, filepath):
         return self.s3.upload_file(filepath, K_BUCKET_NAME, filepath, ExtraArgs={'ACL': K_PUBLIC_READ})
