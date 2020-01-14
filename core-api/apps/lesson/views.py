@@ -53,3 +53,17 @@ class RecognizeImageView(views.APIView):
         url = s3_manager.upload_image(folder, full_name)
         print ('URL: ', url)
         return response.Response(result, status=200)
+
+
+class SaveTrainingImageView(views.APIView):
+    def post(self, request, format=None):
+        base64_data = request.data.get('imageData')
+        kanji = request.data.get('kanji')
+        print (kanji)
+        folder = '{}/{}'.format(IMAGE_DIR, kanji)
+        os.system('mkdir -p {}'.format(folder))
+        filename = '{}-{}'.format('user', datetime.now().strftime("%Y%m%d-%H%M%S"))
+        full_name = save_base64_to_file(base64_data, folder, filename)
+        s3_manager = S3ImageManager()
+        url = s3_manager.upload_image(folder, full_name)
+        return response.Response(url, status=200)
