@@ -13,7 +13,6 @@ class S3ImageManager(object):
         self.api = S3API(K_BUCKET_NAME)
 
     def upload_image(self, folder, filename):
-        print ('UPLOADING')
         filepath = os.path.join(folder, filename)
         uploaded_url = self.api.upload_file(filepath)
         return uploaded_url
@@ -30,9 +29,3 @@ class S3API(object):
 
     def upload_file(self, filepath):
         return self.s3.upload_file(filepath, K_BUCKET_NAME, filepath, ExtraArgs={'ACL': K_PUBLIC_READ})
-        # print ('UPLOAD FILE')
-        # key = self.bucket.new_key(filepath)
-        # key.set_contents_from_filename(filepath)
-        # key.set_acl(K_PUBLIC_READ)
-        # url = key.generate_url(expires_in=0, query_auth=False)
-        # return url
