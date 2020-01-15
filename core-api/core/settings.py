@@ -28,6 +28,26 @@ DEBUG = os.environ.get('IS_DEVELOPMENT', True)
 
 ALLOWED_HOSTS = ['localhost', '*', 'wanikanji-core-api.herokuapp.com', 'wanikanji-fe.herokuapp.com']
 
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000',
+    'wanikanji-fe.herokuapp.com',
+)
+CORS_ORIGIN_REGEX_WHITELIST = (
+    r'^(localhost:[0-9]*)'
+)
+CORS_ALLOW_HEADERS = (
+    'x-requested-with',
+    'content-type',
+    'accept',
+    'origin',
+    'authorization',
+    'x-csrftoken',
+    'user-agent',
+    'accept-encoding',
+    'session-id',
+    'api-key'
+)
 
 # Application definition
 
@@ -40,10 +60,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'apps.lesson',
+    'corsheaders',
     'utility',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
